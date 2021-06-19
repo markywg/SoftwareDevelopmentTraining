@@ -1,18 +1,15 @@
 <template>
-  <v-app>
-    <select></select>
-  </v-app>
+  <admin-main />
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import Select from "./components/Select.vue"
-
+import adminMain from "./views/AdminMain.vue"
 
 export default Vue.extend({
   name: "App",
   components: {
-    Select
+    adminMain
   },
   data: () => ({
     //
