@@ -2,12 +2,12 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 
 import Error from "../views/Error.vue"
-import Home from "../views/Home.vue"
-import QueryStu from "../views/QueryStu.vue"
-import QueryHp from "../views/QueryHp.vue"
+import QueryStu from "../views/admin/QueryStu.vue"
+import QueryHp from "../views/admin/QueryHp.vue"
 import Login from "../views/Login.vue"
-import ManageStu from "../views/ManageStu.vue"
-import ManageHp from "../views/ManageHp.vue"
+import ManageStu from "../views/admin/ManageStu.vue"
+import ManageHp from "../views/admin/ManageHp.vue"
+import Admin from "../views/Admin.vue"
 
 Vue.use(VueRouter);
 
@@ -19,13 +19,12 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: '/',
-    name: 'home',
-    component: Home,
+    redirect: '/login'
   },
   {
-    path: '/home',
-    name: 'home',
-    component: Home,
+    path: '/admin',
+    name: 'admin',
+    component: Admin
   },
   {
     path: '/querystu',
