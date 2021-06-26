@@ -1,5 +1,5 @@
 <template>
-<div class="queryhp">
+<div class="querystu">
   <v-form v-model="valid">
     <v-container>
       <v-row>

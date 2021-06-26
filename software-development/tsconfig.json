@@ -34,7 +34,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-, "src/main.ts", "src/http/api.js", "src/http/modules/user.ts", "src/http/api.jts", "src/http/axios.js", "src/http/config.js", "src/http/index.js"  ],
+, "src/main.ts", "src/http/api.js", "src/http/modules/user.ts", "src/http/api.jts", "src/http/axios.js", "src/http/config.js", "src/http/index.js", "src/plugins/motion.js"  ],
   "exclude": [
     "node_modules"
   ]

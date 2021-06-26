@@ -1,97 +1,86 @@
 <template>
-<v-app class="admin">
-    <nav>
-        <v-toolbar>
-            <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-            <v-toolbar-title class="black--text">
-                <span class="font-weight-light">宿舍管理系统</span>
+    <v-app>
+        <v-app-bar height="64" color="primary" :elevation="appbarShadow" clipped-left app dark>
+            <v-toolbar-title>
+                <v-avatar tile>
+                    <v-icon size="40" style="transform: rotate(180deg)">mdi-android-auto</v-icon>
+                </v-avatar> 宿舍管理系统
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn flat color="white" @click="$router.push({path: '/login'})">
-                <span>退出登录</span>
-                <v-icon right>exit_to_app</v-icon>
-            </v-btn>
-        </v-toolbar>
+            <v-toolbar-items>
+                <v-btn text @click="logout">
+                    <v-text>退出登录</v-text>
+                </v-btn>
+            </v-toolbar-items>
+        </v-app-bar>
 
-        <v-navigation-drawer v-model="drawer" absolute temporary class="indigo lighten-2">
-            <v-list
-                nav
-                dense
-            >
-                <v-list-item-group
-                active-class="light-indigo--text text--accent-4"
-                >
-                    <v-list-item link @click="$router.push({path: '/home'})">
-                        <v-list-item-icon>
-                        <v-icon>mdi-home</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-title class="white--text">首页</v-list-item-title>
-                    </v-list-item>
-                        
-                        <v-list-group
-                        no-action
-                        sub-group
-                        >
-                            <template v-slot:activator>
-                                <v-list-item-content>
-                                    <v-list-item-title class="white--text">查询用户信息</v-list-item-title>
-                                </v-list-item-content>
-                            </template>
+        <Navigation :miniNav="miniNav" :backgroundNav="backgroundNav" />
 
-                            <v-list-item
-                                v-for="link in searchlinks" 
-                                :key="link.title" 
-                                link @click="$router.push({path: link.route})"
-                            >
-                                <v-list-item-title v-text="link.title" class="white--text"></v-list-item-title>
-                            </v-list-item>
-                        </v-list-group>
-
-
-                    <v-list-group
-                        no-action
-                        sub-group
-                    >
-                        <template v-slot:activator>
-                            <v-list-item-content>
-                                <v-list-item-title class="white--text">管理用户信息</v-list-item-title>
-                            </v-list-item-content>
-                        </template>
-
-                        <v-list-item
-                            v-for="link in managelinks" 
-                            :key="link.title" 
-                            link @click="$router.push({path: link.route})"
-                        >
-                            <v-list-item-title v-text="link.title" class="white--text"></v-list-item-title>
-                        </v-list-item>
-                    </v-list-group>
-                </v-list-item-group>
-            </v-list>
-        </v-navigation-drawer>
-    </nav>
-
-    <router-view></router-view>
-</v-app>
+        <v-content class="divder pb-12" :style="background">
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
+            
+        </v-content>
+    </v-app>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-    name: 'admin',
+<script>
+import { mapGetters, mapActions } from 'vuex'
+import Navigation from '../components/adminNav.vue'
+
+export default {
+    name: 'Home',
+    components: {
+        Navigation
+    },
     data() {
-        return{
-            drawer: false,
-            group: null,
-            searchlinks: [
-                {title: '查询学生信息',route: '/admin/querystu'},
-                {title: '查询宿管信息',route: '/admin/queryhp'}
-            ],
-            managelinks: [
-                {title: "管理学生信息",route: '/admin/managestu'},
-                {title: "管理宿管信息",route: '/admin/managehp'}
-            ]
+        return {
+            tabList: [],
+            setting: false,
+            miniNav: false,
+            tabsView: true,
+            backgroundNav: true,
+            appbarShadow: 4,
+            background: {
+                backgroundImage: `url(${require('../assets/background.png')})`,
+                backgroundAttachment: 'fixed'
+            },
+            fullscreenIcon: 'mdi-fullscreen',
+            tabMenu: false,
+            x: 0,
+            y: 0
+        }
+    },
+    mounted() {
+        this.tabList.push({
+            name: this.$route.name,
+            path: this.$route.path,
+            title: this.$route.meta
+        })
+        this.tabsView = JSON.parse(localStorage.getItem('tabsView') || true)
+        this.miniNav = JSON.parse(localStorage.getItem('miniNav') || false)
+        this.backgroundNav = JSON.parse(localStorage.getItem('backgroundNav') || true)
+        this.appbarShadow = localStorage.getItem('appbarShadow') || 4
+    },
+    methods: {
+        logout() {
+            localStorage.removeItem('token')
+            this.$router.push('/login')
+        }
+    },
+    watch: {
+        $route(to) {
+            // 查找tabs里面是否已经包含该路由
+            let isCover = this.tabList.some((val) => {
+                return val.name == to.name
+            });
+            !isCover && this.tabList.push({
+                name: to.name,
+                path: to.path,
+                title: to.meta
+            })
         }
     }
-})
+}
 </script>

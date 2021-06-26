@@ -1,5 +1,5 @@
 <template>
-<div class="querystu">
+<div class="queryhp">
   <v-simple-table style="align='center">
     <template v-slot:default>
       <thead>
