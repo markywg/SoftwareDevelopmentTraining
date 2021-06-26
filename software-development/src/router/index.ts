@@ -64,17 +64,11 @@ const routes: Array<RouteConfig> = [
         meta: '查询学生信息'
       },
       {
-        path: '/hp/queryrepairs',
-        name: 'queryRepairs',
-        component: () => import('@/views/hp/query/QueryRepairs.vue'),
-        meta: '查询报修信息'
-      },
-      {
-        path: '/hp/queryatd',
-        name: 'queryAtd',
-        component: () => import('@/views/hp/query/QueryAtd.vue'),
-        meta: '查询考勤信息'
-      },
+        path: '/hp/querynews',
+        name: 'hpQueryStu',
+        component: () => import('@/views/hp/query/HpQueryNews.vue'),
+        meta: '查看公告'
+      },  
       {
         path: '/hp/managein',
         name: 'queryAtd',
@@ -92,6 +86,12 @@ const routes: Array<RouteConfig> = [
         name: 'queryAtd',
         component: () => import('@/views/hp/manage/ManageRepairs.vue'),
         meta: '处理报修申请'
+      },
+      {
+        path: '/hp/manageatd',
+        name: 'manageAtd',
+        component: () => import('@/views/hp/manage/ManageAtd.vue'),
+        meta: '考勤'
       },
       {
         path: '/hp/postnews',

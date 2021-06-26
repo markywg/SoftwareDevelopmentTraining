@@ -63,20 +63,7 @@ export default {
     data() {
         return {
             navList: [
-                {
-                title: '查询宿舍信息',
-                icon: 'mdi-speedometer',
-                group: '/hp',
-                items: [{
-                    title: '查询保修信息',
-                    path: '/hp/queryrepairs',
-                    icon: 'mdi-triangle-outline'
-                }, {
-                    title: '查询考勤信息',
-                    path: '/hp/queryatd',
-                    icon: 'mdi-material-design'
-                }]
-            }, {
+            {
                 title: '查询用户信息',
                 icon: 'mdi-lightbulb-outline',
                 group: '/hp',
@@ -87,6 +74,10 @@ export default {
                 },{
                     title: '查询个人信息',
                     path: '/hp/queryself',
+                    icon: 'mdi-transition-masked'
+                },{
+                    title: '查看公告',
+                    path: '/hp/querynews',
                     icon: 'mdi-transition-masked'
                 }]
             },  {
@@ -102,8 +93,12 @@ export default {
                     path: '/hp/manageout',
                     icon: 'mdi-transition-masked'
                 },{
-                    title: '处理保修申请',
+                    title: '处理报修申请',
                     path: '/hp/managerepairs',
+                    icon: 'mdi-transition-masked'
+                },{
+                    title: '考勤',
+                    path: '/hp/manageatd',
                     icon: 'mdi-transition-masked'
                 },{
                     title: '发布公告',
