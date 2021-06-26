@@ -66,39 +66,43 @@ export default {
             {
                 title: '查询用户信息',
                 icon: 'mdi-lightbulb-outline',
-                group: '/hp',
+                group: '/headhp',
                 items: [{
                     title: '查询学生信息',
-                    path: '/hp/querystu',
+                    path: '/headhp/querystu',
                     icon: 'mdi-transition-masked'
                 },{
-                    title: '查询个人信息',
-                    path: '/hp/queryself',
+                    title: '查询宿管信息',
+                    path: '/headhp/headqueryhp',
                     icon: 'mdi-transition-masked'
                 },{
                     title: '查看公告',
-                    path: '/hp/querynews',
+                    path: '/headhp/querynews',
                     icon: 'mdi-transition-masked'
                 }]
             },  {
                 title: '管理信息',
                 icon: 'mdi-lightbulb-outline',
-                group: '/hp',
+                group: '/headhp',
                 items: [{
+                    title: '处理入住申请',
+                    path: '/headhp/managein',
+                    icon: 'mdi-transition-masked'
+                },{
                     title: '处理离校申请',
-                    path: '/hp/manageout',
+                    path: '/headhp/manageout',
                     icon: 'mdi-transition-masked'
                 },{
                     title: '处理报修申请',
-                    path: '/hp/managerepairs',
+                    path: '/headhp/managerepairs',
                     icon: 'mdi-transition-masked'
                 },{
                     title: '考勤',
-                    path: '/hp/manageatd',
+                    path: '/headhp/manageatd',
                     icon: 'mdi-transition-masked'
                 },{
                     title: '发布公告',
-                    path: '/hp/postnews',
+                    path: '/headhp/postnews',
                     icon: 'mdi-transition-masked'
                 },]
             }]

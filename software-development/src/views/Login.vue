@@ -119,6 +119,13 @@ export default Vue.extend({
                         this.$router.push('/hphome')
                     }, 1500);
                 }
+                if(this.$v.account.$model==='headhp123'&&this.$v.password.$model==='123'){
+                    this.loading = true
+                    setTimeout(() => {
+                        this.loading = false
+                        this.$router.push('/headhphome')
+                    }, 1500);
+                }
             }
         }
     }

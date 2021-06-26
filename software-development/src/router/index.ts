@@ -65,25 +65,19 @@ const routes: Array<RouteConfig> = [
       },
       {
         path: '/hp/querynews',
-        name: 'hpQueryStu',
+        name: 'hpQueryNews',
         component: () => import('@/views/hp/query/HpQueryNews.vue'),
         meta: '查看公告'
       },  
       {
-        path: '/hp/managein',
-        name: 'queryAtd',
-        component: () => import('@/views/hp/manage/ManageCheckIn.vue'),
-        meta: '处理入住申请'
-      },
-      {
         path: '/hp/manageout',
-        name: 'queryAtd',
+        name: 'manageOut',
         component: () => import('@/views/hp/manage/ManageLeave.vue'),
         meta: '处理离校申请'
       },
       {
         path: '/hp/managerepairs',
-        name: 'queryAtd',
+        name: 'manageRepairs',
         component: () => import('@/views/hp/manage/ManageRepairs.vue'),
         meta: '处理报修申请'
       },
@@ -95,8 +89,64 @@ const routes: Array<RouteConfig> = [
       },
       {
         path: '/hp/postnews',
-        name: 'queryAtd',
+        name: 'postNews',
         component: () => import('@/views/hp/manage/PostNews.vue'),
+        meta: '发布公告'
+      }
+    ]
+  },
+  {
+    path: '/headhphome',
+    name: 'headHpHome',
+    component: () => import('@/views/headHp.vue'),
+    meta: '总宿管首页',
+    children: [
+      {
+        path: '/headhp/headqueryhp',
+        name: 'headQueryHp',
+        component: () => import('@/views/headhp/query/headQueryHp.vue'),
+        meta: '查询宿管信息'
+      },
+      {
+        path: '/headhp/querystu',
+        name: 'headHpQueryStu',
+        component: () => import('@/views/headhp/query/HpQueryStu.vue'),
+        meta: '查询学生信息'
+      },
+      {
+        path: '/headhp/querynews',
+        name: 'headHpQueryStu',
+        component: () => import('@/views/headhp/query/HpQueryNews.vue'),
+        meta: '查看公告'
+      },  
+      {
+        path: '/headhp/managein',
+        name: 'headHpManageCheckin',
+        component: () => import('@/views/headhp/manage/ManageCheckIn.vue'),
+        meta: '处理入住申请'
+      },
+      {
+        path: '/headhp/manageout',
+        name: 'headHpManageLeave',
+        component: () => import('@/views/headhp/manage/ManageLeave.vue'),
+        meta: '处理离校申请'
+      },
+      {
+        path: '/headhp/managerepairs',
+        name: 'headHpManageRepairs',
+        component: () => import('@/views/headhp/manage/ManageRepairs.vue'),
+        meta: '处理报修申请'
+      },
+      {
+        path: '/headhp/manageatd',
+        name: 'headHpManageAtd',
+        component: () => import('@/views/headhp/manage/ManageAtd.vue'),
+        meta: '考勤'
+      },
+      {
+        path: '/headhp/postnews',
+        name: 'headHpPostNews',
+        component: () => import('@/views/headhp/manage/PostNews.vue'),
         meta: '发布公告'
       }
     ]
